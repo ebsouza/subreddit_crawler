@@ -5,12 +5,12 @@ import argparse
 from src.crawler import RedditCrawler
 from src.utils import thread_info_to_string
 
-parser = argparse.ArgumentParser(description='Process some integers.')
+parser = argparse.ArgumentParser(description='Reddit Crawler')
 parser.add_argument('--subreddits',
                     dest='subreddits',
                     default=None,
                     type=str,
-                    help='Subthreads list as string. Ex: Home;AskReddit;leagueoflegends;Minecraft')
+                    help='Subthreads list as string. Ex: Home;AskReddit;Minecraft')
 parser.add_argument('--like_threshold',
                     dest='like_threshold',
                     default=0,
