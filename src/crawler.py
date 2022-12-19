@@ -3,10 +3,11 @@
 import requests
 from bs4 import BeautifulSoup
 
-from src.config import browser_info, no_data_message_str, no_data_message_int
+from src.config import browser_info, no_data_message_int, no_data_message_str
 
 
 class RedditExtractor:
+
     def __init__(self, base_url, html):
         self.base_url = base_url
         self.html = html
@@ -49,7 +50,9 @@ class RedditExtractor:
 
     def __extract_likes(self, html_element):
         html_element = html_element.find("div", {"class": "midcol unvoted"})
-        likes = html_element.find("div", {"class": "score unvoted"}).get('title')
+        likes = html_element.find("div", {
+            "class": "score unvoted"
+        }).get('title')
         try:
             return int(likes)
         except TypeError:
@@ -68,7 +71,9 @@ class RedditExtractor:
     def __extract_comments(self, html_element):
         thread = html_element.find("div", {"class": "entry unvoted"})
         try:
-            return thread.find("a", {"data-event-action": "comments"}).get('href')
+            return thread.find("a", {
+                "data-event-action": "comments"
+            }).get('href')
         except AttributeError:
             return no_data_message_str
 
@@ -102,8 +107,10 @@ class RedditCrawler:
             else:
                 break
 
-            next_url = self.__get_next_url(page_generator, thread_info_list[-1]['id'])
-            response = requests.get(next_url, headers={"User-Agent": browser_info})
+            next_url = self.__get_next_url(page_generator,
+                                           thread_info_list[-1]['id'])
+            response = requests.get(next_url,
+                                    headers={"User-Agent": browser_info})
 
             if count_pages >= page_limit:
                 break
