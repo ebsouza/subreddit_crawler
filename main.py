@@ -2,8 +2,8 @@
 
 import argparse
 
-from crawler import RedditCrawler
-from utils import thread_info_to_string
+from src.crawler import RedditCrawler
+from src.utils import thread_info_to_string
 
 parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('--subreddits', dest='subreddits', default=None, type=str,

@@ -3,7 +3,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from config import browser_info, no_data_message_str, no_data_message_int
+from src.config import browser_info, no_data_message_str, no_data_message_int
 
 
 class RedditExtractor:
